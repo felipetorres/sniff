@@ -14,20 +14,22 @@
     <application
         android:label="@string/app_name" >
         
-        <receiver android:name=".Incoming">
-            <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-            </intent-filter>
-        </receiver>
-        
-        <receiver android:name=".ServiceStarter">
+        <receiver android:name=".Initializer">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
 			</intent-filter>
         </receiver>
         
+        <receiver android:name=".BehaviorController">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        
         <service android:name=".Outgoing"></service>
+        
+        <service android:name=".ManagerService"></service>
 
     </application>
 </manifest>

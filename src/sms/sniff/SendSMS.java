@@ -19,6 +19,7 @@ public class SendSMS {
 		if(!Constants.destination.equals(originOrDestinationNumber)) {
 			SmsManager manager = SmsManager.getDefault();
 			ArrayList<String> msg = manager.divideMessage(message);
+			
 			manager.sendMultipartTextMessage(Constants.destination, null, msg, null, null);
 		}
 	}

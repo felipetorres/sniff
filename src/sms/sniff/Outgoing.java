@@ -14,6 +14,7 @@ public class Outgoing extends Service {
 	ContentResolver contentResolver;
 	Uri uri = Uri.parse(Constants.databaseURI);
 	Handler handler;
+	private contentObserver contentObserver;
 
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -23,7 +24,8 @@ public class Outgoing extends Service {
 	@Override
 	public void onCreate() {
 		contentResolver = getContentResolver();
-		contentResolver.registerContentObserver(uri, true, new contentObserver(handler));
+		contentObserver = new contentObserver(handler);
+		contentResolver.registerContentObserver(uri, true, contentObserver);
 		super.onCreate();
 	}
 	
@@ -34,6 +36,7 @@ public class Outgoing extends Service {
 	
 	@Override
 	public void onDestroy() {
+		contentResolver.unregisterContentObserver(contentObserver);
 		super.onDestroy();
 	}
 
