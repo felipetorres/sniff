@@ -1,4 +1,4 @@
-package sms.sniff;
+package sms.sniff.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

