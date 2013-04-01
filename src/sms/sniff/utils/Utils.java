@@ -22,11 +22,15 @@ public class Utils {
 		return null;
 	}
 	
-	public String format(String date) {
+	public String format(String date, String pattern) {
 		long l = Long.parseLong(date);
-		   SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm a");        
-		   Date resultdate = new Date(l);
-		   String strDate = sdf.format(resultdate);
+		return format(l, pattern);
+	}
+	
+	public String format(long date, String pattern) {
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);        
+		Date resultdate = new Date(date);
+	    String strDate = sdf.format(resultdate);
 		return strDate;
 	}
 }

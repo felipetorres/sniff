@@ -16,7 +16,7 @@ public class Initializer extends BroadcastReceiver{
 		Constants.destination = prefs.getString(Constants.sharedPreferences_destination, "");
 		
 		if(keepAlive) {
-			context.startService(new Intent(context, ManagerService.class));
+			context.startService(new Intent(context, DynamicRegisterService.class));
 		}
 	}
 }

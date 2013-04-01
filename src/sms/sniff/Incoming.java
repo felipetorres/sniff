@@ -33,7 +33,7 @@ public class Incoming extends BroadcastReceiver{
 					
 					if(originPhoneNumber.length() > 3) {
 						String contactName = utils.getContactByPhoneNumber(context.getContentResolver(), originPhoneNumber);
-						String time = utils.format(String.valueOf(msgs[i].getTimestampMillis()));
+						String time = utils.format(String.valueOf(msgs[i].getTimestampMillis()), "MMM dd,yyyy HH:mm a");
 						
 						msg += "Recebida em:" + time + "\n";
 						msg += "De: " + contactName + " ("+ originPhoneNumber + ")" + "\n";

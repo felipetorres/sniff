@@ -13,9 +13,9 @@ import android.os.IBinder;
 
 public class Outgoing extends Service {
 
-	ContentResolver contentResolver;
-	Uri uri = Uri.parse(Constants.databaseURI);
-	Handler handler;
+	private ContentResolver contentResolver;
+	private Uri uri = Uri.parse(Constants.databaseURI);
+	private Handler handler;
 	private contentObserver contentObserver;
 
 	@Override
@@ -52,8 +52,9 @@ public class Outgoing extends Service {
 			Cursor cursor = contentResolver.query(uri, null, null, null, null);
 			cursor.moveToFirst();
 			String body = cursor.getString(cursor.getColumnIndex("body"));
+			int type = cursor.getInt(cursor.getColumnIndex("type"));
 			
-			if(body.equals(Constants.lastSmsText)) {
+			if(body.equals(Constants.lastSmsText) || type == SmsType.MESSAGE_INBOX.getValue()) {
 				super.onChange(selfChange);
 				return;
 			}
@@ -66,7 +67,7 @@ public class Outgoing extends Service {
 			Utils utils = new Utils();
 			
 			String contactName = utils.getContactByPhoneNumber(contentResolver, destinationPhoneNumber);
-			String strDate = utils.format(date);
+			String strDate = utils.format(date, "MMM dd,yyyy HH:mm a");
 			
 			String message = "Enviada Em: " + strDate + "\n"
 						   + "Para: " + contactName + " (" + destinationPhoneNumber + ")" + "\n"
