@@ -1,4 +1,4 @@
-package sms.sniff;
+package sms.sniff.sms;
 
 public enum SmsType {
 

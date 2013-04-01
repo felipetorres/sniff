@@ -1,7 +1,7 @@
 package sms.sniff.behaviors;
 
-import sms.sniff.Constants;
-import sms.sniff.DynamicRegisterService;
+import sms.sniff.core.Constants;
+import sms.sniff.core.DynamicRegisterService;
 import sms.sniff.utils.SMS;
 import android.content.Context;
 import android.content.Intent;

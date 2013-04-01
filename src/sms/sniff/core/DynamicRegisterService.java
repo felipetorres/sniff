@@ -1,6 +1,8 @@
-package sms.sniff;
+package sms.sniff.core;
 
 import sms.sniff.call.IncomingOutgoingCall;
+import sms.sniff.sms.Incoming;
+import sms.sniff.sms.Outgoing;
 import sms.sniff.utils.SharedPreferencesEditor;
 import android.app.Service;
 import android.content.BroadcastReceiver;

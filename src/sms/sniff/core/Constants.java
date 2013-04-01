@@ -1,4 +1,4 @@
-package sms.sniff;
+package sms.sniff.core;
 
 public class Constants {
 

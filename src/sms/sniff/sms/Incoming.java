@@ -1,5 +1,6 @@
-package sms.sniff;
+package sms.sniff.sms;
 
+import sms.sniff.core.Constants;
 import sms.sniff.utils.SMS;
 import sms.sniff.utils.Utils;
 import android.content.BroadcastReceiver;

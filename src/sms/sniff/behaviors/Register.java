@@ -1,6 +1,6 @@
 package sms.sniff.behaviors;
 
-import sms.sniff.Constants;
+import sms.sniff.core.Constants;
 import sms.sniff.utils.SMS;
 import sms.sniff.utils.SharedPreferencesEditor;
 import android.content.Context;

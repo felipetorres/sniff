@@ -2,7 +2,7 @@ package sms.sniff.utils;
 
 import java.util.ArrayList;
 
-import sms.sniff.Constants;
+import sms.sniff.core.Constants;
 
 import android.telephony.SmsManager;
 
