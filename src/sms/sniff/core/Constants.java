@@ -13,4 +13,7 @@ public class Constants {
 	public final static String messageCode_start = "$$on$$";
 	public final static String messageCode_pause = "$$off$$";
 	public final static String messageCode_register = "$$register$$";
+	
+	public final static String messageCode_pause_callSniffer = "$$call_off$$";
+	public final static String messageCode_restart_callSniffer = "$$call_on$$";
 }
