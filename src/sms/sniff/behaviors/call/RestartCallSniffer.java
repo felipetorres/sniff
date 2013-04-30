@@ -1,5 +1,6 @@
-package sms.sniff.behaviors;
+package sms.sniff.behaviors.call;
 
+import sms.sniff.behaviors.Behavior;
 import sms.sniff.call.IncomingOutgoingCall;
 import sms.sniff.core.Constants;
 import sms.sniff.utils.SMS;

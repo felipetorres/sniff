@@ -1,5 +1,6 @@
-package sms.sniff.behaviors;
+package sms.sniff.behaviors.core;
 
+import sms.sniff.behaviors.Behavior;
 import sms.sniff.core.Constants;
 import sms.sniff.utils.SMS;
 import sms.sniff.utils.SharedPreferencesEditor;
